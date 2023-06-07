@@ -1,19 +1,19 @@
-#Logs when running ./run_kubernetes.sh
+#Logs running ./run_kubernetes.sh
 
-godzz@godzz:~/udacity/devops/p4/udacity-project-4$ ./run_kubernetes.sh
-NAME     READY   STATUS    RESTARTS   AGE
-ml-api   1/1     Running   0          102s
+russ@russ:~/udacity/devops/p4/udacity-project-4-rus$ ./run_kubernetes.sh
+NAME             READY   STATUS    RESTARTS   AGE
+udacity-ml-api   1/1     Running   0          5s
 Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 Handling connection for 8080
 
-# Logs of running pod
-godzz@godzz:~/udacity/devops/p4/udacity-project-4$ kubectl get pods
-NAME     READY   STATUS    RESTARTS   AGE
-ml-api   1/1     Running   0          111s
+# Logs running pod
+russ@russ:~/udacity/devops/p4/udacity-project-4-rus$ kubectl get pods
+NAME             READY   STATUS    RESTARTS   AGE
+udacity-ml-api   1/1     Running   0          96s
 
-#Logs when running ./make_prediction.sh
-godzz@godzz:~/udacity/devops/p4/udacity-project-4$ ./make_prediction.sh
+#Logs running ./make_prediction.sh
+russ@russ:~/udacity/devops/p4/udacity-project-4-rus$ ./make_prediction.sh
 Port: 8080
 {
   "prediction": [
@@ -21,8 +21,8 @@ Port: 8080
   ]
 }
 
-#Logs of pods when processing api request
-godzz@godzz:~/udacity/devops/p4/udacity-project-4$ kubectl logs ml-api
+#Logs of pods processing api request
+russ@russ:~/udacity/devops/p4/udacity-project-4-rus$ kubectl logs udacity-ml-api
  * Serving Flask app "app" (lazy loading)
  * Environment: production
    WARNING: Do not use the development server in a production environment.
@@ -31,16 +31,16 @@ godzz@godzz:~/udacity/devops/p4/udacity-project-4$ kubectl logs ml-api
  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 118-182-976
-[2023-05-28 10:42:35,590] INFO in app: predict.json_payload:
+ * Debugger PIN: 153-389-041
+[2023-06-07 18:10:59,673] INFO in app: predict.json_payload:
 {'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
-[2023-05-28 10:42:35,597] INFO in app: predict.inference_payload_dataFrame:
+[2023-06-07 18:10:59,682] INFO in app: predict.inference_payload_dataFrame:
    CHAS     RM    TAX  PTRATIO      B  LSTAT
 0     0  6.575  296.0     15.3  396.9   4.98
-[2023-05-28 10:42:35,601] INFO in app: scale.scaling_payload:
+[2023-06-07 18:10:59,686] INFO in app: scale.scaling_payload:
    CHAS     RM    TAX  PTRATIO      B  LSTAT
 0     0  6.575  296.0     15.3  396.9   4.98
-[2023-05-28 10:42:35,603] INFO in app: predict.prediction:
+[2023-06-07 18:10:59,688] INFO in app: predict.prediction:
 [20.35373177134412]
-127.0.0.1 - - [28/May/2023 10:42:35] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2023 18:10:59] "POST /predict HTTP/1.1" 200 -
 
